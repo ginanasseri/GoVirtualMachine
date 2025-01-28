@@ -1,0 +1,7 @@
+LDI r2, 3
+LDI r1, 6
+LDI r2, 6
+ADD r9, r3
+LDI r7, 12
+LDI r4, 1
+PRINTR

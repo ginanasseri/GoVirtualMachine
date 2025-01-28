@@ -1,0 +1,6 @@
+LDI r1, 2
+LDI r2, 2
+ADDV r1, r2
+ADDV r1, r2
+ADDV r1, r2
+ADDV r1,r2

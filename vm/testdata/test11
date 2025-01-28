@@ -1,0 +1,5 @@
+LDI r1, 1
+LDI r2, 8
+JUMP 1
+ADD r1,r2
+STDOUT r1

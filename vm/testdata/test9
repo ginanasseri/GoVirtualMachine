@@ -1,0 +1,4 @@
+LDI r1, 12
+LDI r3, 13
+ADD r7,r6
+STDOUT r6
