@@ -45,7 +45,7 @@ Susan has 10 32-bit registers for read and write operations
 - `vm`: The vm package implements the Go Virtual Machine. It contains the virtual machine architecture including the virtual memory structures and the interpreter. It is the point of control transfer between the host OS and the Susan process. When a New Virtual Machine instance is initialized, memory is allocated in a Virtual Memory data structure to hold the executable code and Susan registers. The Virtual Machine is initialized with a pointer to the virtual memory, and an interpreter which is passed a reference to the virtual memory. 
 - `interpreter`: the interpreter package executes the bytecode instructions contained in the virtual memory executable code block section using the decode and dispatch method. 
 - `parser`: the parser package implements the lexer to obtain a token stream from a line of input, where each line is a Susan instruction, and creates a bytecode representation of each instruction.
-- `lexer`: the lexer breaks down the Susan source code file into tokens. 
+- `lexer`: the lexer breaks down the Susan source code file into tokens. **Also includes** `lexer_test.go` (ensures all syntax and fatal errors are caught and all valid commands are accepted)
 - `instructions`: instructions defines the data type Instruction which represent the bytecode instructions created by the parser
 - `token`: token defines the data type Token which represent the input tokens created by the lexer. 
 
