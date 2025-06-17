@@ -5,6 +5,7 @@ The Go Virtual Machine provides an isolated execution environment for executing 
 **Usage:** 
 - To run directly, use: `go run main.go`
 - To compile and create an executable use: `go build -o gvm` and `./gvm` to run program. 
+- Example programs are provided in the `sun` directory. 
 
 Once loaded, enter 'run [file]' to execute instructions, where file is a program written in the Susan instruction set. Some samples programs are included within the `sun` directory. There are also several sample files within the `vm/testdata/` directory which demonstrate error handling, including branching error handling. The user can continue running programs or use `exit` to exit.
 
