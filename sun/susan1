@@ -1,8 +1,8 @@
 LDI r1, 2
 STDOUT r1
-LDI r8, 2
+LDI r8, 4
 ADD r1,r8
 STDOUT r1
-LDI r8, 2
+LDI r8, 8
 ADD r1, r8
 STDOUT r1
