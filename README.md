@@ -8,8 +8,9 @@ The Go Virtual Machine provides an isolated execution environment for executing 
 
 Once loaded, enter 'run [file]' to execute instructions, where file is a program written in the Susan instruction set. Some samples programs are included within the `sun` directory. There are also several sample files within the `vm/testdata/` directory which demonstrate error handling, including branching error handling. The user can continue running programs or use `exit` to exit.
 
+E.g., run sun/susan5 
 
-### Susan Instruction Set Summary
+### Instruction Set Summary
 
 |Mnemonic|Operands|Description | Operation  |
 |:--------|:--------|:-------------|:------------|
@@ -20,13 +21,13 @@ Once loaded, enter 'run [file]' to execute instructions, where file is a program
 | PRINTR | | Print all registers
 
 
-### Susan Registers 
+### Registers 
 Susan has 10 32-bit registers for read and write operations
 - Register 0 is a special purpose register which stores the address of the last instruction in the program code. This is used to check if JUMP instructions are valid. This Register is read-only when in execution mode.
 - Registers 1:9 are general purpose read-and-write registers. 
 
 
-### Additional Features: Susan Visual Mode 
+### Additional Features: Visual Mode 
 |Mnemonic|Operands|Description | Operation  |
 |:--------|:--------|:-------------|:------------|
 |  ADDV | Rd,Rr  |Visual mode add   | Rd ← Rd + Rk |
@@ -42,10 +43,10 @@ Susan has 10 32-bit registers for read and write operations
 # Package Contents and Control Flow
 
 ## Package Contents 
-- `vm`: The vm package implements the Go Virtual Machine. It contains the virtual machine architecture including the virtual memory structures and the interpreter. It is the point of control transfer between the host OS and the Susan process. When a New Virtual Machine instance is initialized, memory is allocated in a Virtual Memory data structure to hold the executable code and Susan registers. The Virtual Machine is initialized with a pointer to the virtual memory, and an interpreter which is passed a reference to the virtual memory. 
+- `vm`: The vm package implements the Go Virtual Machine. It contains the virtual machine architecture including the virtual memory structures and the interpreter. It is the point of control transfer between the host OS and the Susan process. When a New Virtual Machine instance is initialized, memory is allocated in a Virtual Memory data structure to hold the executable code and Susan registers. The Virtual Machine is initialized with a pointer to the virtual memory, and an interpreter which is passed a reference to the virtual memory. **Also includes** `vm_test.go` and the directory `testdata` that contains test cases of valid programs and cases of programs with errors. (tests errors raised by the lexer or parser is correctly propagated to `main` and exception handling is behaving as expected. Fails if any error in a program is not detected.)
 - `interpreter`: the interpreter package executes the bytecode instructions contained in the virtual memory executable code block section using the decode and dispatch method. 
-- `parser`: the parser package implements the lexer to obtain a token stream from a line of input, where each line is a Susan instruction, and creates a bytecode representation of each instruction.
-- `lexer`: the lexer breaks down the Susan source code file into tokens. **Also includes** `lexer_test.go` (ensures all syntax and fatal errors are caught and all valid commands are accepted)
+- `parser`: the parser package implements the lexer to obtain a token stream from a line of input, where each line is a Susan instruction, and creates a bytecode representation of each instruction. **Also includes** `parser_test.go` (tests that the parser correctly accepted token streams with valid syntax (e.g., ADD r1, r2) and rejecting token streams with invalid syntax). 
+- `lexer`: the lexer breaks down the Susan source code file into tokens. **Also includes** `lexer_test.go` (tests that the lexer is correctly accepting all valid token types (e.g., INT, REG, etc.) and rejecting any token not defined in the language.)
 - `instructions`: instructions defines the data type Instruction which represent the bytecode instructions created by the parser
 - `token`: token defines the data type Token which represent the input tokens created by the lexer. 
 
