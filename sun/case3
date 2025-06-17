@@ -1,9 +1,0 @@
-LDI r1, 2
-STDOUT r1
-LDI r8, 2
-JUMP 10
-ADD r1,r8
-STDOUT r1
-LDI r8, 2
-ADD r1, r8
-STDOUT r1
