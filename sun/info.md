@@ -1,5 +1,5 @@
 ```text
-Susan Sample Programs 
+Sample Programs 
 
 susan0: ~ Add Two Numbers ~ [prints 9]
 0: LDI r1, 1
